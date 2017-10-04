@@ -9,20 +9,27 @@
 import Foundation
 import LocalAuthentication
 
-
-class TouchIDAuthentication {
-    let context = LAContext()
+@available(iOS 8.0, *)
+open class TouchIDAuthentication {
     
-    func canEvaluate() -> Bool {
+    fileprivate let context = LAContext()
+    
+    // This funciton returns true if the devices used has
+    // touchId functionality
+    open func canEvaluateTouchID() -> Bool {
         return context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
     }
     
+    // This function is called when you want to authenticate the current
+    // user of the app is the owner of the device
     func authenticateUser(completion: @escaping (String?) -> ()) {
-        guard canEvaluate() else {
+        // STEP 1 check touch ID availability
+        guard canEvaluateTouchID() else {
             completion("Touch ID not available")
             return
         }
         
+        // STEP 2 read touch ID and verify
         context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Loggin with Touch ID") { (success, error) in
             if success {
                 DispatchQueue.main.async {
@@ -30,7 +37,7 @@ class TouchIDAuthentication {
                 }
             } else {
                 let message : String!
-                
+                // These are some error cases, but there are much more
                 switch error {
                 case LAError.authenticationFailed?:
                     message = "There was a problem verifying your identity."
@@ -44,7 +51,6 @@ class TouchIDAuthentication {
                 completion(message)
             }
         }
-        
     }
     
 }

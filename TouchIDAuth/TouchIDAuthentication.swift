@@ -9,33 +9,44 @@
 import Foundation
 import LocalAuthentication
 
-@available(iOS 8.0, *)
 open class TouchIDAuthentication {
     
     fileprivate let context = LAContext()
+    fileprivate var policy : LAPolicy
+    
+    init() {
+        
+        if #available(iOS 9.0, *) {
+            policy = .deviceOwnerAuthentication
+        } else {
+            context.localizedFallbackTitle = "Use Passcode"
+            policy = .deviceOwnerAuthenticationWithBiometrics
+        }
+    }
     
     // This funciton returns true if the devices used has
     // touchId functionality
     open func canEvaluateTouchID() -> Bool {
-        return context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
+        return context.canEvaluatePolicy(policy, error: nil)
     }
     
     // This function is called when you want to authenticate the current
     // user of the app is the owner of the device
-    func authenticateUser(completion: @escaping (String?) -> ()) {
+    func authenticateUser(with numOfAttempt: Int = 1, completion: @escaping (String?) -> ()) {
         // STEP 1 check touch ID availability
-        guard canEvaluateTouchID() else {
+        
+        guard canEvaluateTouchID() && numOfAttempt > 0 else {
             completion("Touch ID not available")
             return
         }
-        
-        // STEP 2 read touch ID and verify
-        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Loggin with Touch ID") { (success, error) in
+        print(context.touchIDAuthenticationAllowableReuseDuration)
+        context.evaluatePolicy(policy, localizedReason: "Loggin with Touch ID") { (success, error) in
             if success {
                 DispatchQueue.main.async {
                     completion(nil)
                 }
             } else {
+                
                 let message : String!
                 // These are some error cases, but there are much more
                 switch error {
@@ -48,9 +59,12 @@ open class TouchIDAuthentication {
                 default:
                     message = "Touch ID may not be configured"
                 }
-                completion(message)
+                DispatchQueue.main.async {
+                    completion(message)
+                }
             }
         }
+        
     }
     
 }

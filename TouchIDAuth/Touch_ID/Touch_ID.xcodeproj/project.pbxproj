@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8073AC71F88299700C6CCF9 /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8073AC61F88299700C6CCF9 /* TouchIDAuthentication.swift */; };
 		A82410211F881AFB00B0E93C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82410201F881AFB00B0E93C /* AppDelegate.swift */; };
 		A82410231F881AFB00B0E93C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82410221F881AFB00B0E93C /* ViewController.swift */; };
 		A82410261F881AFB00B0E93C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A82410241F881AFB00B0E93C /* Main.storyboard */; };
 		A82410281F881AFB00B0E93C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A82410271F881AFB00B0E93C /* Assets.xcassets */; };
 		A824102B1F881AFB00B0E93C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A82410291F881AFB00B0E93C /* LaunchScreen.storyboard */; };
-		A82410351F881B1C00B0E93C /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82410341F881B1C00B0E93C /* TouchIDAuthentication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A8073AC61F88299700C6CCF9 /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
 		A824101D1F881AFB00B0E93C /* Touch_ID.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Touch_ID.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A82410201F881AFB00B0E93C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A82410221F881AFB00B0E93C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -23,7 +24,6 @@
 		A82410271F881AFB00B0E93C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A824102A1F881AFB00B0E93C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A824102C1F881AFB00B0E93C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A82410341F881B1C00B0E93C /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TouchIDAuthentication.swift; path = ../../TouchIDAuthentication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				A82410201F881AFB00B0E93C /* AppDelegate.swift */,
-				A82410341F881B1C00B0E93C /* TouchIDAuthentication.swift */,
 				A82410221F881AFB00B0E93C /* ViewController.swift */,
+				A8073AC61F88299700C6CCF9 /* TouchIDAuthentication.swift */,
 				A82410241F881AFB00B0E93C /* Main.storyboard */,
 				A82410271F881AFB00B0E93C /* Assets.xcassets */,
 				A82410291F881AFB00B0E93C /* LaunchScreen.storyboard */,
@@ -141,7 +141,7 @@
 			files = (
 				A82410231F881AFB00B0E93C /* ViewController.swift in Sources */,
 				A82410211F881AFB00B0E93C /* AppDelegate.swift in Sources */,
-				A82410351F881B1C00B0E93C /* TouchIDAuthentication.swift in Sources */,
+				A8073AC71F88299700C6CCF9 /* TouchIDAuthentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
